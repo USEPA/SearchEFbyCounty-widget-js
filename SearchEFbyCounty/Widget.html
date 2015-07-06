@@ -1,0 +1,29 @@
+<div>
+<form id="locForm" name="locForm" class="frmStyle1 frmStyle2" onsubmit="return false;">
+  <fieldset><legend>
+Search Envirofacts by County:
+</legend>
+
+Enter county and state (e.g., Arlington,VA):<br />
+ <input type="text" name="efsearchtext" data-dojo-attach-point="efsearchNode" maxlength="100" size="18" value="" data-dojo-attach-event="onkeypress:_zippress" />
+ 
+ <br />
+<input type="button" value="Search" data-dojo-attach-event="onclick: _searchEF" />
+<input type="button" value="Clear" data-dojo-attach-event="onclick: _clearEF" />
+<div data-dojo-attach-point="countdiv"></div>
+<div data-dojo-attach-point="rowdiv"></div> 
+</fieldset>
+  </form>
+ 
+ 
+<div data-dojo-attach-point="dwNode" style="display: none;">   
+  <a href="javascript:void(0)" class="toggle" data-dojo-attach-point="dwNodeAnchor" data-dojo-attach-event="onmousedown:_toggleDownload">    
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Download
+  </a>        
+  <div data-dojo-attach-point="dwNodeItems" style="position: relative; top: 0px; left: 2px; background-color: #FFFFFF;display: none; margin-left: 10px;">
+    <div data-dojo-attach-point="efDownloadNode" style="margin: 16px 6px 6px 6px; padding-top: 10px;"></div>
+  </div>
+</div>  
+</div>
+
+
