@@ -21,7 +21,14 @@ function(declare, BaseWidget, _Widget,_Templated,EFdownload,EFrowOver,_config) {
 
     postCreate: function() {
       this.inherited(arguments);
-      console.log('postCreate');
+      var searchtext = ""
+	  //replace any plus signs with space
+      if (this.appConfig.county) searchtext = this.appConfig.county.replace(/\+/g," ");;
+      if (searchtext.length > 0) {
+        this.efsearchNode.value = searchtext;        
+        this._searchEF();
+ 
+      }
     },
 
    startup: function() {
@@ -105,10 +112,15 @@ destroy: function () {
 
         var widgetobj = this;
 
+        var countyname = searchtext.split(",")[0];
+        //removed passed in county, etc
+        countyname = countyname.replace(/county/gi, "");
+        countyname = countyname.replace(/parish/gi, "");  
+        countyname = countyname.replace(/borough/gi, "");   
+        countyname = dojo.string.trim(countyname);
 
-        
-        var countyname = dojo.string.trim(searchtext.split(",")[0]);
         var stateabbr = dojo.string.trim(searchtext.split(",")[1]);
+        
         //alert(countyname + "; " + stateabbr);
         var inputurl = efsearchurl + "state_code/" + stateabbr.toUpperCase() + "/county_name/" + countyname.toUpperCase() + "/";
         
